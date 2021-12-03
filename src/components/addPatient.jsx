@@ -4,22 +4,13 @@ export default function AddPatient(props) {
 
     function addPatient(name){
 
- //       setLoading(true);
         try{
-          props.contract.methods.addPatient(name).send( {from: props.accounts[0]} ).on('receipt', function(receipt){ 
-            console.log(receipt);
-          //  setSuccessOpen(true); 
-       //     setLoading(false); 
-          }).on('error', function(error, receipt){
-       //     setLoading(false);
-            console.log(error);
-       //     setFailOpen(true);
-          })
+          props.contract.methods.addPatient(name).send( {from: props.accounts[0]} )
+
+     
         }catch(error)
         {
-  //        setLoading(false);
           console.log(error);
-    //      setFailOpen(true);
         }
         document.getElementById("Patient Name").value = '';
       }

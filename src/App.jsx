@@ -16,24 +16,22 @@ function TabPanel({ children, value, index }) {
   return <div>{value === index && <Box p={1}>{children}</Box>}</div>;
 }
 
-function App() {
-  
+
   // endereço onde a blockchain está rodando
   const providerUrl = 'http://localhost:7545'
-  const contract_address = "0x0028EfA58dc667d5B0fB6341D5925e0393F08319"
+  const contract_address = "0x70B37810dA879462Fc3EF6BC9aABe59b0D6ef139"
+  const web3 = new Web3(providerUrl);
+
   const abi = require('./abi.json');
+  const contract = new web3.eth.Contract(abi, contract_address);
 
-  const [accounts,setAccounts] = useState();
+  var accounts;
+  web3.eth.getAccounts().then((out) => {accounts = out;} );
+
+function App() {
+  
   const [value, setValue] = useState(0);
-  
-  const [web3, setWeb3] = useState(new Web3(providerUrl));
-  const [contract,setContract] = useState(new web3.eth.Contract(abi, contract_address));
 
- // const [loading,setLoading] = useState(false);
-  
-  web3.eth.getAccounts().then((out) => { setAccounts(out) });
-
-    
   const handleChange = useCallback((event, newValue) => {
     setValue(newValue);
   }, []);

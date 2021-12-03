@@ -5,36 +5,24 @@ export default function Appointment(props) {
 
     function addAppointment(doctorID,patientID,diagnosis){
 
-  //      setLoading(true);
         var d_id = parseInt(doctorID,10);
         var p_id = parseInt(patientID,10);
         if( isNaN(d_id) || isNaN(p_id) )
         {
-  //        setLoading(false);
-   //       setFailOpen(true);
+            console.log("Entrada inválida");
         }
-        try{
-          props.contract.methods.appointment(d_id,p_id,diagnosis).send( {from: props.accounts[0]} ).on('receipt', function(receipt){ 
-            console.log(receipt);
-    //        setSuccessOpen(true); 
-  //          setLoading(false); 
-          }).on('error', function(error, receipt){
- //           setLoading(false);
-            console.log(error);
-    //        setFailOpen(true);
-          })
-        }catch(error)
-        {
- //         setLoading(false);
-          console.log(error);
-    //      setFailOpen(true);
+
+        else{
+            try{
+                props.contract.methods.appointment(d_id,p_id,diagnosis).send( {from: props.accounts[0]} )
+            }catch(error){
+                console.log(error);
+            }
         }
         document.getElementById("Doctor ID").value = '';
         document.getElementById("Patient ID").value = '';
         document.getElementById("Diagnosis").value = '';
       }
-
-
 
     return(
         <div>

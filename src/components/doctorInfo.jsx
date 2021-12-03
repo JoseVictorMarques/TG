@@ -7,24 +7,20 @@ export default function DoctorInfo(props) {
     const [totalAppoint,settotalAppoint] = useState(null);
 
     function DoctorInfo(doctorID){
-  //      setLoading(true);
+
         var d_id = parseInt(doctorID,10);
         if( isNaN(d_id) )
         { 
- //         setLoading(false);
-//          setFailOpen(true);
+            console.log("Entrada inválida");
         }else{
           try{
             props.contract.methods.doctors(d_id).call().then(function(result){
               setDoctorName(result.name);
               settotalAppoint(result.totalAppointments)
-   //           setLoading(false);
             })
           }
           catch(error){
             console.log(error);
- //           setFailOpen(true);
- //           setLoading(false);
           }
         }
       }

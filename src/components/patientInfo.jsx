@@ -7,24 +7,20 @@ export default function PatientInfo(props) {
     const [patientName,setPatientName] = useState('');
 
     function PatientInfo(patientID){
-  //      setLoading(true);
+
         var p_id = parseInt(patientID,10);
         if( isNaN(p_id) )
         { 
-  //        setLoading(false);
-  //        setFailOpen(true);
+          console.log("Entrada inválida");
         }else{
           try{
             props.contract.methods.patients(p_id).call().then(function(result){
               setPatientName(result.name);
               setDiagnosis(result.diagnosis)
-   //           setLoading(false);
             })
           }
           catch(error){
             console.log(error);
-   //         setFailOpen(true);
-    //        setLoading(false);
           }
         }
       }
