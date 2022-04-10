@@ -18,25 +18,24 @@ function TabPanel({ children, value, index }) {
 
 
   // endereço onde a blockchain está rodando
-  const providerUrl = 'http://localhost:7545'
-  const contract_address = "0x70B37810dA879462Fc3EF6BC9aABe59b0D6ef139"
+  const providerUrl = 'http://localhost:8545'
+  const contract_address = "0x21208818AdC3E6E6Ec417139B9d245d68C3E8D83"
   const web3 = new Web3(providerUrl);
 
   const abi = require('./abi.json');
   const contract = new web3.eth.Contract(abi, contract_address);
 
   var accounts;
-  web3.eth.getAccounts().then((out) => {accounts = out;} );
+  web3.eth.getAccounts().then((out) => {accounts = out; console.log(accounts);} );
 
 function App() {
   
   const [value, setValue] = useState(0);
-
   const handleChange = useCallback((event, newValue) => {
     setValue(newValue);
   }, []);
 
-    
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -47,6 +46,7 @@ function App() {
             TabIndicatorProps={{style: {backgroundColor:"#63235A"}}}
             textColor='primary'
             variant='fullWidth'
+           
           >
             <Tab label={"Add doctor"} style={{color:"#63235A"}}/>
             <Tab label={"Add pacient"} style={{color:"#63235A"}}/>
