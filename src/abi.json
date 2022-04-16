@@ -1,16 +1,20 @@
 [
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "doctorsCount",
-		"outputs": [
+		"constant": false,
+		"inputs": [
 			{
-				"name": "",
-				"type": "uint256"
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_specialty",
+				"type": "string"
 			}
 		],
+		"name": "addDoctor",
+		"outputs": [],
 		"payable": false,
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -21,7 +25,7 @@
 				"type": "string"
 			}
 		],
-		"name": "addDoctor",
+		"name": "addPatient",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -50,6 +54,74 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_patientId",
+				"type": "uint256"
+			},
+			{
+				"name": "_doctorId",
+				"type": "uint256"
+			},
+			{
+				"name": "_authorize",
+				"type": "bool"
+			}
+		],
+		"name": "relations",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_patientId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"name": "_doctorId",
+				"type": "uint256"
+			}
+		],
+		"name": "writedEvent",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "authorizations",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -68,7 +140,25 @@
 				"type": "string"
 			},
 			{
+				"name": "specialty",
+				"type": "string"
+			},
+			{
 				"name": "totalAppointments",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "doctorsCount",
+		"outputs": [
+			{
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -116,42 +206,5 @@
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_name",
-				"type": "string"
-			}
-		],
-		"name": "addPatient",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "_patientId",
-				"type": "uint256"
-			},
-			{
-				"indexed": true,
-				"name": "_doctorId",
-				"type": "uint256"
-			}
-		],
-		"name": "writedEvent",
-		"type": "event"
 	}
 ]
