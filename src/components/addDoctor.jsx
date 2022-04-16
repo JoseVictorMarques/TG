@@ -23,6 +23,10 @@ export default function AddDoctor(props) {
                         id="Doctor Name"
                         className="textinput"
                         placeholder="Doctor Name"/>
+                    <input 
+                        id="Doctor Specialty"
+                        className="textinput"
+                        placeholder="Doctor Specialty"/>
                 </div>
                 <div>
                     <input 
