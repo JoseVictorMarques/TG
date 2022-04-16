@@ -6,7 +6,7 @@ export default function AddDoctor(props) {
     function addDoctor(name, specialty){
 
         try{
-          props.contract.methods.addDoctor(name).send( {from: props.accounts[0]} )
+          props.contract.methods.addDoctor(name, specialty).send( {from: props.accounts[0]} )
   
         }catch(error)
         {
@@ -23,6 +23,8 @@ export default function AddDoctor(props) {
                         id="Doctor Name"
                         className="textinput"
                         placeholder="Doctor Name"/>
+                </div>
+                <div>
                     <input 
                         id="Doctor Specialty"
                         className="textinput"
