@@ -3,6 +3,7 @@ import { Tabs,Tab,Box } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import AddDoctor from './components/addDoctor';
 import AddPatient from './components/addPatient';
+import Authorization from './components/relations';
 import Appointment from './components/appointment';
 import DoctorInfo from './components/doctorInfo';
 import PatientInfo from './components/patientInfo';
@@ -18,25 +19,24 @@ function TabPanel({ children, value, index }) {
 
 
   // endereço onde a blockchain está rodando
-  const providerUrl = 'http://localhost:7545'
-  const contract_address = "0x70B37810dA879462Fc3EF6BC9aABe59b0D6ef139"
+  const providerUrl = 'http://localhost:8545'
+  const contract_address = "0xd017CFf187326Bb412ed309112941a5710Abd1Ae"
   const web3 = new Web3(providerUrl);
 
   const abi = require('./abi.json');
   const contract = new web3.eth.Contract(abi, contract_address);
 
   var accounts;
-  web3.eth.getAccounts().then((out) => {accounts = out;} );
+  web3.eth.getAccounts().then((out) => {accounts = out; console.log(accounts);} );
 
 function App() {
   
   const [value, setValue] = useState(0);
-
   const handleChange = useCallback((event, newValue) => {
     setValue(newValue);
   }, []);
 
-    
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -47,9 +47,11 @@ function App() {
             TabIndicatorProps={{style: {backgroundColor:"#63235A"}}}
             textColor='primary'
             variant='fullWidth'
+           
           >
             <Tab label={"Add doctor"} style={{color:"#63235A"}}/>
             <Tab label={"Add pacient"} style={{color:"#63235A"}}/>
+            <Tab label={"Authorization"} style={{color:"#63235A"}}/>
             <Tab label={"Appointment"} style={{color:"#63235A"}}/>
             <Tab label={"Doctor info"} style={{color:"#63235A"}}/>
             <Tab label={"Pacient info"} style={{color:"#63235A"}}/>
@@ -68,12 +70,15 @@ function App() {
               <AddPatient contract={contract} accounts={accounts}/>
             </TabPanel>
             <TabPanel value={value} index={2} >
-              <Appointment contract={contract} accounts={accounts}/>
+              <Authorization contract={contract} accounts={accounts}/>
             </TabPanel>
             <TabPanel value={value} index={3} >
-              <DoctorInfo contract={contract}/>
+              <Appointment contract={contract} accounts={accounts}/>
             </TabPanel>
             <TabPanel value={value} index={4} >
+              <DoctorInfo contract={contract}/>
+            </TabPanel>
+            <TabPanel value={value} index={5} >
               <PatientInfo contract={contract}/>
             </TabPanel>
           
