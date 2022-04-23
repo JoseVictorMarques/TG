@@ -1,4 +1,4 @@
-import { useState , useCallback } from 'react';
+/*import { useState , useCallback } from 'react';
 import { Tabs,Tab,Box } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import AddDoctor from './components/addDoctor';
@@ -6,20 +6,19 @@ import AddPatient from './components/addPatient';
 import Authorization from './components/relations';
 import Appointment from './components/appointment';
 import DoctorInfo from './components/doctorInfo';
-import PatientInfo from './components/patientInfo';
-
-
+import PatientInfo from './components/patientInfo';*/
 import './App.css'
 import Web3 from 'web3';
 
 
-function TabPanel({ children, value, index }) {
-  return <div>{value === index && <Box p={1}>{children}</Box>}</div>;
-}
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Doctor from './components/actors/doctor/doctor';
+import Patient from './components/actors/patient/patient';
+import Regulator from './components/actors/regulator/regulator';
+import SignIn from './components/signIn';
 
   // endereço onde a blockchain está rodando
-  const providerUrl = 'http://localhost:8545'
+  const providerUrl = 'http://localhost:7545'
   const contract_address = "0xd017CFf187326Bb412ed309112941a5710Abd1Ae"
   const web3 = new Web3(providerUrl);
 
@@ -30,63 +29,24 @@ function TabPanel({ children, value, index }) {
   web3.eth.getAccounts().then((out) => {accounts = out; console.log(accounts);} );
 
 function App() {
-  
-  const [value, setValue] = useState(0);
-  const handleChange = useCallback((event, newValue) => {
-    setValue(newValue);
-  }, []);
-
-  
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="container">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            TabIndicatorProps={{style: {backgroundColor:"#63235A"}}}
-            textColor='primary'
-            variant='fullWidth'
-           
-          >
-            <Tab label={"Add doctor"} style={{color:"#63235A"}}/>
-            <Tab label={"Add pacient"} style={{color:"#63235A"}}/>
-            <Tab label={"Authorization"} style={{color:"#63235A"}}/>
-            <Tab label={"Appointment"} style={{color:"#63235A"}}/>
-            <Tab label={"Doctor info"} style={{color:"#63235A"}}/>
-            <Tab label={"Pacient info"} style={{color:"#63235A"}}/>
-          </Tabs>
-
-          <div className="logo_text">MedRecords</div>
-          <SwipeableViews
-            onSwitching={(v) => setValue(v)}
-            index={value}
-          >
-    
-            <TabPanel value={value} index={0} >
-              <AddDoctor contract={contract} accounts={accounts} />
-            </TabPanel>
-            <TabPanel value={value} index={1} >
-              <AddPatient contract={contract} accounts={accounts}/>
-            </TabPanel>
-            <TabPanel value={value} index={2} >
-              <Authorization contract={contract} accounts={accounts}/>
-            </TabPanel>
-            <TabPanel value={value} index={3} >
-              <Appointment contract={contract} accounts={accounts}/>
-            </TabPanel>
-            <TabPanel value={value} index={4} >
-              <DoctorInfo contract={contract}/>
-            </TabPanel>
-            <TabPanel value={value} index={5} >
-              <PatientInfo contract={contract}/>
-            </TabPanel>
-          
-          </SwipeableViews>
-        </div>
-      </header>
-    </div>
-  )
+  <Router>
+    <Switch>
+      <Route path="/regulator">
+        <Regulator contract ={contract} accounts ={accounts}/>
+      </Route>
+      <Route path="/patient">
+        <Patient contract ={contract} accounts ={accounts}/>
+      </Route>
+      <Route path="/doctor">
+        <Doctor contract ={contract} accounts ={accounts}/>
+      </Route>
+      <Route path="/">
+        <SignIn contract ={contract} accounts ={accounts}/>
+      </Route>
+    </Switch>
+  </Router>
+  );
 }
 
 export default App
