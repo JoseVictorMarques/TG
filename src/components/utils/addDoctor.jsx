@@ -6,8 +6,8 @@ export default function AddDoctor(props) {
     function addDoctor(name, specialty){
 
         try{
-          props.contract.methods.addDoctor(name, specialty).send( {from: props.accounts[0]} )
-  
+          props.contract.methods.addDoctor(name, specialty).send( {from: props.accounts[0], gas:3000000} )
+          
         }catch(error)
         {
           console.log(error);
@@ -34,7 +34,8 @@ export default function AddDoctor(props) {
                 <Button 
                     variant="contained"
                     style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'220px', marginTop:'10px'}}
-                    onClick={(e)=>addDoctor(document.getElementById('Doctor Name').value, document.getElementById('Doctor Specialty').value)}
+                    onClick={(e)=>addDoctor(document.getElementById('Doctor Name').value, 
+                    document.getElementById('Doctor Specialty').value)}
                 >
                     SUBMIT
                 </Button>
