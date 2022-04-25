@@ -4,7 +4,8 @@ import SwipeableViews from 'react-swipeable-views';
 import Appointment from '../../utils/appointment';
 import DoctorInfo from '../../utils/doctorInfo';
 import PatientInfo from '../../utils/patientInfo';
-
+import { Link} from "react-router-dom";
+import { Button } from '@material-ui/core';
 
 
 function TabPanel({ children, value, index }) {
@@ -53,6 +54,11 @@ function Doctor({contract, accounts}) {
             
             </SwipeableViews>
           </div>
+            <Link to="/">
+              <Button
+              variant="contained"
+              style={{backgroundColor: '#63235A', color: '#FFFFFF'}}>Back</Button>
+            </Link>
         </header>
       </div>
   );

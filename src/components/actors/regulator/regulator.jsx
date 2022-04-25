@@ -5,7 +5,8 @@ import AddDoctor from '../../utils/addDoctor';
 import AddPatient from '../../utils/addPatient';
 import DoctorInfo from '../../utils/doctorInfo';
 import PatientInfo from '../../utils/patientInfo';
-
+import { Link} from "react-router-dom";
+import { Button } from '@material-ui/core';
 
 function TabPanel({ children, value, index }) {
   return <div>{value === index && <Box p={1}>{children}</Box>}</div>;
@@ -58,6 +59,11 @@ function Regulator({contract, accounts}) {
             
             </SwipeableViews>
           </div>
+            <Link to="/">
+              <Button
+              variant="contained"
+              style={{backgroundColor: '#63235A', color: '#FFFFFF'}}>Back</Button>
+            </Link>
         </header>
       </div>
   );
