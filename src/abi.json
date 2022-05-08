@@ -9,6 +9,10 @@
 			{
 				"name": "_specialty",
 				"type": "string"
+			},
+			{
+				"name": "_password",
+				"type": "string"
 			}
 		],
 		"name": "addDoctor",
@@ -22,6 +26,10 @@
 		"inputs": [
 			{
 				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_password",
 				"type": "string"
 			}
 		],
@@ -45,6 +53,10 @@
 			{
 				"name": "_patientDiagnosis",
 				"type": "string"
+			},
+			{
+				"name": "_docPassword",
+				"type": "string"
 			}
 		],
 		"name": "appointment",
@@ -67,6 +79,10 @@
 			{
 				"name": "_authorize",
 				"type": "bool"
+			},
+			{
+				"name": "_patPassword",
+				"type": "string"
 			}
 		],
 		"name": "relations",
@@ -125,6 +141,29 @@
 		"constant": true,
 		"inputs": [
 			{
+				"name": "a",
+				"type": "string"
+			},
+			{
+				"name": "b",
+				"type": "string"
+			}
+		],
+		"name": "compStrings",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
 				"name": "",
 				"type": "uint256"
 			}
@@ -146,6 +185,10 @@
 			{
 				"name": "totalAppointments",
 				"type": "uint256"
+			},
+			{
+				"name": "password",
+				"type": "string"
 			}
 		],
 		"payable": false,
@@ -186,6 +229,10 @@
 			},
 			{
 				"name": "diagnosis",
+				"type": "string"
+			},
+			{
+				"name": "password",
 				"type": "string"
 			}
 		],

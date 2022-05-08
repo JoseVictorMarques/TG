@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 export default function Appointment(props) {
 
 
-    function addAppointment(doctorID,patientID,diagnosis){
+    function addAppointment(doctorID,patientID,diagnosis,password){
 
         var d_id = parseInt(doctorID,10);
         var p_id = parseInt(patientID,10);
@@ -14,7 +14,7 @@ export default function Appointment(props) {
 
         else{
             try{
-                props.contract.methods.appointment(d_id,p_id,diagnosis).send( {from: props.accounts[0]} )
+                props.contract.methods.appointment(d_id,p_id,diagnosis, password).send( {from: props.accounts[0]} )
             }catch(error){
                 console.log(error);
             }
@@ -22,6 +22,7 @@ export default function Appointment(props) {
         document.getElementById("Doctor ID").value = '';
         document.getElementById("Patient ID").value = '';
         document.getElementById("Diagnosis").value = '';
+        document.getElementById("DocPass").value = '';
       }
 
     return(
@@ -31,6 +32,13 @@ export default function Appointment(props) {
                 id="Doctor ID"
                 className="textinput"
                 placeholder="Doctor ID"/>
+            </div>
+            <div>
+                <input 
+                id="DocPass"
+                className="textinput"
+                type= "password"
+                placeholder="Password"/>
             </div>
             <div>
                 <input 
@@ -47,7 +55,7 @@ export default function Appointment(props) {
             <Button 
                 variant="contained"
                 style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'220px'}}
-                onClick={(e)=>addAppointment(document.getElementById('Doctor ID').value,document.getElementById('Patient ID').value,document.getElementById('Diagnosis').value)}
+                onClick={(e)=>addAppointment(document.getElementById('Doctor ID').value,document.getElementById('Patient ID').value,document.getElementById('Diagnosis').value, document.getElementById('DocPass').value)}
             >
                 SUBMIT
             </Button>

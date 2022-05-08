@@ -2,10 +2,10 @@ import { Button } from '@material-ui/core';
 
 export default function AddPatient(props) {
 
-    function addPatient(name){
+    function addPatient(name,password){
 
         try{
-          props.contract.methods.addPatient(name).send( {from: props.accounts[0]} )
+          props.contract.methods.addPatient(name, password).send( {from: props.accounts[0]} )
 
      
         }catch(error)
@@ -13,6 +13,7 @@ export default function AddPatient(props) {
           console.log(error);
         }
         document.getElementById("Patient Name").value = '';
+        document.getElementById("Patient Pass").value = '';
       }
 
 
@@ -24,10 +25,17 @@ export default function AddPatient(props) {
                     className="textinput"
                     placeholder="Patient Name"/>
             </div>
+            <div>
+                <input 
+                    id="Patient Pass"
+                    className="textinput"
+                    type="password"
+                    placeholder="Password"/>
+            </div>
             <Button 
                 variant="contained"
                 style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'220px', marginTop:'10px'}}
-                onClick={(e)=>addPatient(document.getElementById('Patient Name').value)}
+                onClick={(e)=>addPatient(document.getElementById('Patient Name').value, document.getElementById('Patient Pass').value)}
             >
                 SUBMIT
             </Button>
