@@ -5,7 +5,7 @@ export default function AddPatient(props) {
     function addPatient(name,password){
 
         try{
-          props.contract.methods.addPatient(name, password).send( {from: props.accounts[0]} )
+          props.contract.methods.addPatient(name, password).send( {from: props.accounts[0], gas:3000000} )
 
      
         }catch(error)
