@@ -20,7 +20,7 @@ import { useEffect, useState } from 'react';
 
   // endereço onde a blockchain está rodando
   const providerUrl = 'http://localhost:7545'
-  const contract_address = "0x3Aa1D07BD57A89856d5930d1aFCd41d71796f1B3"
+  const contract_address = "0x236001350b4E117DB2cF022a7c0cBFAA3aC53378"
   const web3 = new Web3(providerUrl);
 
   const abi = require('./abi.json');
@@ -40,13 +40,13 @@ function App() {
   return (
   <Router>
     <Switch >
-      <Route path="/regulator">
+      <Route path="/regulator/:rid">
         <Regulator contract ={contract} accounts ={accounts}/>
       </Route>
-      <Route path="/patient">
+      <Route path="/patient/:pid">
         <Patient contract ={contract} accounts ={accounts}/>
       </Route>
-      <Route path="/doctor">
+      <Route path="/doctor/:did">
         <Doctor contract ={contract} accounts ={accounts}/>
       </Route>
       <Route path="/">

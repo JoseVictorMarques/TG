@@ -4,10 +4,10 @@
     height:100vh;
     position: fixed;
 }
-.Box-Selector{
+.Box-Selector, .ID-div, .password-div{
     margin: 10px;
     padding: 10px;
-    background-color: rgb(99, 35, 90);;
+    background-color: rgb(99, 35, 90);
     color: white;
 }
 #demo-simple-select-label{
