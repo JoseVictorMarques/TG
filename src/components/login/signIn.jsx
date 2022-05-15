@@ -12,24 +12,26 @@ function SignIn(props) {
   const [actor, setActor] = useState('');
   const [id, setID] = useState(0);
   const [password, setPassword]= useState('');
+  const [respOK, setRespOk] = useState(undefined);
 
   const handleChange = (event) => {
     setActor(event.target.value);
   };
 
-  function handleSubmit(ident, pwrd ) {
+  function handleSubmit (ident, pwrd ){
     var uid = parseInt(ident,10);
+    //console.log(pwrd)
     try{
-      props.contract.methods.verifyUser(actor, uid, pwrd).send( {from: props.accounts[0], gas:3000000} );
-      setID(uid);
-      setPassword(pwrd);
+      props.contract.methods.verifyUser(actor, uid, pwrd).send( {from: props.accounts[0], gas:3000000} ).then(out=>{setRespOk(out)})
     }catch(error)
     {
       console.log(error);
     }
 
-
+    setID(uid);
+    setPassword(pwrd);
   }
+
 
 
   return (
@@ -69,16 +71,16 @@ function SignIn(props) {
           </div>
           <Button 
               style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'10vw', marginTop:'10px'}}
-              onClick={(e)=>handleSubmit( document.getElementById('signin_id').value, document.getElementById('signin_password').value)}
+              onClick={()=>handleSubmit( document.getElementById('signin_id').value, document.getElementById('signin_password').value)}
           >
             Enter
           </Button>
-            {
-             (  id > 0 && password !== ''&& actor === 1)? <Redirect to= {`/doctor/${id}`} />:
-             (id > 0 && password !== ''&& actor === 2)? <Redirect to={`/patient/${id}`}  />:
-             ( id > 0 && password !== ''&& actor === 3)? <Redirect to={`/regulator/${id}`}  />:
+          {  
+             ( respOK !==undefined && actor === 1)? <Redirect to= {`/doctor/${id}`} />:
+             (respOK !==undefined  && actor === 2)? <Redirect to={`/patient/${id}`}  />:
+             ( respOK !==undefined && actor === 3)? <Redirect to={`/regulator/${id}`}  />:
               <Redirect to="/" /> 
-            }
+          }
       </div>
   );
 }

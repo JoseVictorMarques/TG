@@ -20,7 +20,7 @@ import { useEffect, useState } from 'react';
 
   // endereço onde a blockchain está rodando
   const providerUrl = 'http://localhost:7545'
-  const contract_address = "0x236001350b4E117DB2cF022a7c0cBFAA3aC53378"
+  const contract_address = "0x5a500189F6E8197fBB707CD4Bb5CC7Ae215A7999"
   const web3 = new Web3(providerUrl);
 
   const abi = require('./abi.json');
