@@ -10,6 +10,9 @@
     background-color: rgb(99, 35, 90);
     color: white;
 }
+#demo-simple-select-password, #demo-simple-select-ocuppation, #demo-simple-select-id{
+    color:white;
+}
 #demo-simple-select-label{
     color: white;
 }

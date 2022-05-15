@@ -38,7 +38,7 @@ function SignIn(props) {
       <div className='SignIn-All'>
         <Box className='Box-Selector'>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-ocuppation">Occupation</InputLabel>
+              <InputLabel  id="demo-simple-select-ocuppation">Occupation</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -54,16 +54,15 @@ function SignIn(props) {
           </Box>
           <div className='ID-div'>
             <FormControl>
-                <InputLabel id="demo-simple-select-id">Id</InputLabel>
+                <InputLabel  id="demo-simple-select-id">Id</InputLabel>
                 <Input
                 id="signin_id"
-                type= "text"
                 placeholder="type your id here"/>
             </FormControl>
           </div>
           <div className='password-div'>
               <FormControl>
-                <InputLabel id="demo-simple-select-password">Password</InputLabel>
+                <InputLabel  id="demo-simple-select-password">Password</InputLabel>
                 <Input id="signin_password"
                 type= "password"
                 placeholder="type your password here"/>
