@@ -29,7 +29,6 @@ export default function PatientInfo(props) {
             props.contract.methods.patients(p_id).call().then(function(result){
               setPatientName(result.name);
               settotalAppoint(result.totalAppointments);
-              console.log(result.totalAppointments)
               if (result.totalAppointments > 0){
                 var aux = [];
                 for( var i=1; i<= result.totalAppointments;i++){
@@ -37,12 +36,10 @@ export default function PatientInfo(props) {
                     var obj = { "code": result2.diagnosis_code, "date": conversionDate(result2.timestamp)}
                     aux.push(obj);
                     setDiagnosis(aux);
-                    console.log(aux)
                   })
                 }
               }
             })
-            console.log(diagnosis)
           }
           catch(error){
             console.log(error);
