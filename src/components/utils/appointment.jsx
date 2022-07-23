@@ -15,6 +15,7 @@ export default function Appointment(props) {
         else{
             try{
                 var timestamp = new Date().getTime();
+                timestamp = parseInt(timestamp)
                 props.contract.methods.appointment(d_id,p_id,diagnosis, password,timestamp).send( {from: props.accounts[0]} )
             }catch(error){
                 console.log(error);
