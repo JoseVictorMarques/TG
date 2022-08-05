@@ -44,13 +44,13 @@ function Patient({contract, accounts}) {
             >
 
               <TabPanel value={value} index={0} >
-                <Authorization contract={contract} accounts={accounts}/>
+                <Authorization contract={contract} accounts={accounts} id={pid}/>
               </TabPanel>
               <TabPanel value={value} index={1} >
                 <DoctorInfo contract={contract}/>
               </TabPanel>
               <TabPanel value={value} index={2} >
-                <PatientInfo contract={contract}/>
+                <PatientInfo contract={contract} id={pid}/>
               </TabPanel>
             
             </SwipeableViews>

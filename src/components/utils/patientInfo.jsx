@@ -27,13 +27,16 @@ export default function PatientInfo(props) {
         }else{
           try{
             props.contract.methods.patients(p_id).call().then(function(result){
+              console.log(props)
               setPatientName(result.name);
               settotalAppoint(result.totalAppointments);
               if (result.totalAppointments > 0){
                 var aux = [];
                 for( var i=1; i<= result.totalAppointments;i++){
                   props.contract.methods.diagnosis(p_id, i).call().then(function(result2){
-                    var obj = { "code": result2.diagnosis_code, "date": conversionDate(result2.timestamp)}
+                    console.log(result2)
+                    var obj = { "code": result2.diagnosis_code, "medicine":result2.medicine_code, 
+                    "exam":result2.exam_code, "date": conversionDate(result2.timestamp)}
                     aux.push(obj);
                     setDiagnosis(aux);
                   })

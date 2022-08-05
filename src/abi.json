@@ -73,8 +73,12 @@
 				"type": "string"
 			},
 			{
-				"name": "_docPassword",
-				"type": "string"
+				"name": "_medicine",
+				"type": "uint256"
+			},
+			{
+				"name": "_exam",
+				"type": "uint256"
 			},
 			{
 				"name": "_timestamp",
@@ -101,14 +105,37 @@
 			{
 				"name": "_authorize",
 				"type": "bool"
-			},
-			{
-				"name": "_patPassword",
-				"type": "string"
 			}
 		],
 		"name": "relations",
 		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_typevalue",
+				"type": "uint256"
+			},
+			{
+				"name": "_id",
+				"type": "uint256"
+			},
+			{
+				"name": "_password",
+				"type": "string"
+			}
+		],
+		"name": "verifyUser",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -201,6 +228,14 @@
 				"type": "string"
 			},
 			{
+				"name": "medicine_code",
+				"type": "uint256"
+			},
+			{
+				"name": "exam_code",
+				"type": "uint256"
+			},
+			{
 				"name": "timestamp",
 				"type": "uint256"
 			}
@@ -238,6 +273,10 @@
 			{
 				"name": "password",
 				"type": "string"
+			},
+			{
+				"name": "token",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -283,6 +322,10 @@
 			{
 				"name": "totalAppointments",
 				"type": "uint256"
+			},
+			{
+				"name": "token",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -293,6 +336,25 @@
 		"constant": true,
 		"inputs": [],
 		"name": "patientsCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "random",
 		"outputs": [
 			{
 				"name": "",
@@ -324,6 +386,10 @@
 			{
 				"name": "password",
 				"type": "string"
+			},
+			{
+				"name": "token",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -338,33 +404,6 @@
 			{
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_typevalue",
-				"type": "uint256"
-			},
-			{
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"name": "_password",
-				"type": "string"
-			}
-		],
-		"name": "verifyUser",
-		"outputs": [
-			{
-				"name": "",
-				"type": "bool"
 			}
 		],
 		"payable": false,

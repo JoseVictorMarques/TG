@@ -45,7 +45,7 @@ function Doctor({contract, accounts}) {
             >
 
               <TabPanel value={value} index={0} >
-                <Appointment contract={contract} accounts={accounts}/>
+                <Appointment contract={contract} accounts={accounts} id={did}/>
               </TabPanel>
               <TabPanel value={value} index={1} >
                 <DoctorInfo contract={contract}/>
