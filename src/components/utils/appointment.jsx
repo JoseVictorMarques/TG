@@ -9,7 +9,6 @@ export default function Appointment(props) {
         var p_id = parseInt(patientID);
         var med_code = parseInt(medicine);
         var exam_code = parseInt(exam);
-        console.log(props)
         if( isNaN(d_id) || isNaN(p_id) )
         {
             console.log("Entrada inválida");
@@ -19,8 +18,7 @@ export default function Appointment(props) {
             try{
                 var timestamp = new Date().getTime();
                 timestamp = parseInt(timestamp);
-                console.log(props.accounts[0])
-                props.contract.methods.appointment(d_id,p_id,diagnosis,med_code,exam_code,timestamp).send( {from: props.accounts[0]} )
+                props.contract.methods.appointment(d_id,p_id,diagnosis,med_code,exam_code,timestamp).send( {from: props.accounts[0],gas:3000000} )
             }catch(error){
                 console.log(error);
             }
@@ -60,7 +58,9 @@ export default function Appointment(props) {
             <Button 
                 variant="contained"
                 style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'220px'}}
-                onClick={(e)=>addAppointment(document.getElementById('Patient ID').value,document.getElementById('Diagnosis').value, document.getElementById('Medicine').value,document.getElementById('Exam').value)}>
+                onClick={(e)=>addAppointment(document.getElementById('Patient ID').value,
+                document.getElementById('Diagnosis').value, document.getElementById('Medicine').value,
+                document.getElementById('Exam').value)}>
                 SUBMIT
             </Button>
         </div>
