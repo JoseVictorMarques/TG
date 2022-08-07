@@ -283,6 +283,10 @@
 			{
 				"name": "timestamp",
 				"type": "uint256"
+			},
+			{
+				"name": "doctor_id",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
