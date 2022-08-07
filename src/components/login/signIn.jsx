@@ -18,6 +18,13 @@ function SignIn(props) {
     setActor(event.target.value);
   };
 
+  const handleContractAddress = (event) => {
+     var currentAddress = props.contract.options.address
+     if(currentAddress !== event.target.value){
+      props.contract.options.address = event.target.value;
+     }
+  };
+
   function handleSubmit (ident, pwrd ){
     var uid = parseInt(ident,10);
     //console.log(pwrd)
@@ -66,6 +73,14 @@ function SignIn(props) {
                 <Input id="signin_password"
                 type= "password"
                 placeholder="type your password here"/>
+              </FormControl>
+          </div>
+          <div className='address-div'>
+              <FormControl>
+                <InputLabel  id="demo-simple-select-address">Address</InputLabel>
+                <Input id="signin_contract_address"
+                placeholder="type your contract address here"
+                onChange={handleContractAddress}/>
               </FormControl>
           </div>
           <Button 
