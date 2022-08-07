@@ -34,7 +34,6 @@ export default function PatientInfo(props) {
                 var aux = [];
                 for( var i=1; i<= result.totalAppointments;i++){
                   props.contract.methods.diagnosis(p_id, i).call().then(function(result2){
-                    console.log(result2)
                     var obj = { "code": result2.diagnosis_code, "medicine":result2.medicine_code, 
                     "exam":result2.exam_code, "date": conversionDate(result2.timestamp)}
                     aux.push(obj);
@@ -70,7 +69,7 @@ export default function PatientInfo(props) {
             </Button>
             <div className="textdiv" style={{marginTop:"60px"}}>{patientName ? "Patient Name: "+patientName : null }</div>
             <div className="textdiv">{totalAppoint? "Total appointments: "+totalAppoint: null}</div>
-            <div className="textdiv">{diagnosis.length>0? diagnosis.map((elem)=>JSON.stringify(elem)): null}</div>
+            <div className="textdivdetails">{diagnosis.length>0? diagnosis.map((elem)=>JSON.stringify(elem)): null}</div>
         </div>
     )
 }
