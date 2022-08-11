@@ -3,10 +3,10 @@ import { Button } from '@material-ui/core';
 
 export default function AddDoctor(props) {
 
-    function addDoctor(name, specialty, password){
+    function addDoctor(name, specialty, password, CRM){
 
         try{
-          props.contract.methods.addDoctor(name, specialty, password).send( {from: props.accounts[0], gas:3000000} )
+          props.contract.methods.addDoctor(name, specialty, password, CRM).send( {from: props.accounts[0], gas:3000000} )
           
         }catch(error)
         {
@@ -15,6 +15,7 @@ export default function AddDoctor(props) {
         document.getElementById("Doctor Name").value = '';
         document.getElementById("Doctor Specialty").value = '';
         document.getElementById("Doctor Pass").value = '';
+        document.getElementById("Doctor CRM").value = '';
       }
 
     return(
@@ -34,6 +35,12 @@ export default function AddDoctor(props) {
                 </div>
                 <div>
                     <input 
+                        id="Doctor CRM"
+                        className="textinput"
+                        placeholder="Doctor CRM"/>
+                </div>
+                <div>
+                    <input 
                         id="Doctor Pass"
                         className="textinput"
                         type="password"
@@ -43,7 +50,7 @@ export default function AddDoctor(props) {
                     variant="contained"
                     style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'220px', marginTop:'10px'}}
                     onClick={(e)=>addDoctor(document.getElementById('Doctor Name').value, 
-                    document.getElementById('Doctor Specialty').value, document.getElementById('Doctor Pass').value)}
+                    document.getElementById('Doctor Specialty').value, document.getElementById('Doctor Pass').value,document.getElementById('Doctor CRM').value )}
                 >
                     SUBMIT
                 </Button>
