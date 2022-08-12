@@ -57,6 +57,7 @@ function SignIn(props) {
                 <MenuItem value={2}>Patient</MenuItem>
                 <MenuItem value={3}>Regulator</MenuItem>
                 <MenuItem value={4}>Pharmacy</MenuItem>
+                <MenuItem value={5}>Diagnostic Center</MenuItem>
               </Select>
             </FormControl> 
           </Box>
@@ -95,6 +96,7 @@ function SignIn(props) {
              (respOK !==undefined  && actor === 2)? <Redirect to={`/patient/${id}`}  />:
              ( respOK !==undefined && actor === 3)? <Redirect to={`/regulator/${id}`}  />:
              ( respOK !==undefined && actor === 4)? <Redirect to={`/pharmacy/${id}`}  />:
+             ( respOK !==undefined && actor === 5)? <Redirect to={`/dcenter/${id}`}  />:
               <Redirect to="/" /> 
           }
       </div>

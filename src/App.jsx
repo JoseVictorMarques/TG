@@ -1,12 +1,3 @@
-/*import { useState , useCallback } from 'react';
-import { Tabs,Tab,Box } from '@material-ui/core';
-import SwipeableViews from 'react-swipeable-views';
-import AddDoctor from './components/addDoctor';
-import AddPatient from './components/addPatient';
-import Authorization from './components/relations';
-import Appointment from './components/appointment';
-import DoctorInfo from './components/doctorInfo';
-import PatientInfo from './components/patientInfo';*/
 import './App.css'
 import Web3 from 'web3';
 
@@ -16,6 +7,7 @@ import Doctor from './components/actors/doctor/doctor';
 import Patient from './components/actors/patient/patient';
 import Regulator from './components/actors/regulator/regulator';
 import Pharmacy from './components/actors/pharmacy/pharmacy';
+import DCenter from './components/actors/dcenter/dcenter';
 import SignIn from './components/login/signIn';
 import { useEffect, useState } from 'react';
 
@@ -52,6 +44,9 @@ function App() {
       </Route>
       <Route path="/pharmacy/:phid">
         <Pharmacy contract ={contract} accounts ={accounts}/>
+      </Route>
+      <Route path="/dcenter/:dcid">
+        <DCenter contract ={contract} accounts ={accounts}/>
       </Route>
       <Route path="/">
         <SignIn contract ={contract} accounts ={accounts}/>
