@@ -14,6 +14,32 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_patientId",
+				"type": "uint256"
+			},
+			{
+				"name": "_Id",
+				"type": "uint256"
+			},
+			{
+				"name": "_authorize",
+				"type": "bool"
+			},
+			{
+				"name": "_typevalue",
+				"type": "uint256"
+			}
+		],
+		"name": "relations",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -86,6 +112,29 @@
 			{
 				"name": "",
 				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "authorizationsDoctor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"name": "regulators",
@@ -105,6 +154,29 @@
 			{
 				"name": "token",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "authorizationsDCenter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"payable": false,
@@ -169,25 +241,79 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"constant": true,
 		"inputs": [
 			{
-				"name": "_patientId",
+				"name": "",
 				"type": "uint256"
-			},
-			{
-				"name": "_doctorId",
-				"type": "uint256"
-			},
-			{
-				"name": "_authorize",
-				"type": "bool"
 			}
 		],
-		"name": "relations",
-		"outputs": [],
+		"name": "dcenters",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "password",
+				"type": "string"
+			},
+			{
+				"name": "token",
+				"type": "uint256"
+			}
+		],
 		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "dcentersCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "pharmacies",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "password",
+				"type": "string"
+			},
+			{
+				"name": "token",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -237,7 +363,7 @@
 				"type": "uint256"
 			}
 		],
-		"name": "authorizations",
+		"name": "authorizationsPharmacy",
 		"outputs": [
 			{
 				"name": "",
@@ -246,6 +372,24 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_password",
+				"type": "string"
+			}
+		],
+		"name": "addPharmacy",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -314,6 +458,20 @@
 			}
 		],
 		"name": "random",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "pharmaciesCount",
 		"outputs": [
 			{
 				"name": "",
@@ -402,6 +560,24 @@
 			}
 		],
 		"name": "appointment",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"name": "_password",
+				"type": "string"
+			}
+		],
+		"name": "addDCenter",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",

@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Doctor from './components/actors/doctor/doctor';
 import Patient from './components/actors/patient/patient';
 import Regulator from './components/actors/regulator/regulator';
+import Pharmacy from './components/actors/pharmacy/pharmacy';
 import SignIn from './components/login/signIn';
 import { useEffect, useState } from 'react';
 
@@ -48,6 +49,9 @@ function App() {
       </Route>
       <Route path="/doctor/:did">
         <Doctor contract ={contract} accounts ={accounts}/>
+      </Route>
+      <Route path="/pharmacy/:phid">
+        <Pharmacy contract ={contract} accounts ={accounts}/>
       </Route>
       <Route path="/">
         <SignIn contract ={contract} accounts ={accounts}/>
