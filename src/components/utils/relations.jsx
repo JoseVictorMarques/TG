@@ -36,7 +36,7 @@ export default function Relations(props) {
             <div>
                 <input
                 id="Authorization"
-                className="diagnosis_input"
+                className="textinput"
                 placeholder="Authorization (true/false)"
                 />
             </div>
