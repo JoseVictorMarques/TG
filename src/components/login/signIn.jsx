@@ -30,6 +30,7 @@ function SignIn(props) {
     var uid = parseInt(ident,10);
     if (props.contract.options.address !== contr){
       props.contract.options.address = contr;
+
     }
     try{
       props.contract.methods.verifyUser(actor, uid, pwrd).send( {from: props.accounts[0], gas:3000000} ).then(out=>{setRespOk(out)})

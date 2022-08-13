@@ -79,3 +79,10 @@
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
+
+#relation-select-password, #relation-select-ocuppation, #relation-select-id, #relation-select-address{
+  color:rgb(99, 35, 90);
+}
+#relation-select-label{
+  color: rgb(99, 35, 90);
+}
