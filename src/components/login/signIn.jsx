@@ -13,6 +13,7 @@ function SignIn(props) {
   const [id, setID] = useState(0);
   const [password, setPassword]= useState('');
   const [respOK, setRespOk] = useState(undefined);
+  const [contr,setContr] = useState('');
 
   const handleChange = (event) => {
     setActor(event.target.value);
@@ -21,13 +22,15 @@ function SignIn(props) {
   const handleContractAddress = (event) => {
      var currentAddress = props.contract.options.address
      if(currentAddress !== event.target.value){
-      props.contract.options.address = event.target.value;
+       setContr(event.target.value);
      }
   };
 
   function handleSubmit (ident, pwrd ){
     var uid = parseInt(ident,10);
-    //console.log(pwrd)
+    if (props.contract.options.address !== contr){
+      props.contract.options.address = contr;
+    }
     try{
       props.contract.methods.verifyUser(actor, uid, pwrd).send( {from: props.accounts[0], gas:3000000} ).then(out=>{setRespOk(out)})
     }catch(error)
