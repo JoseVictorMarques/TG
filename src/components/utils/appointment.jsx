@@ -9,7 +9,7 @@ export default function Appointment(props) {
         var p_id = parseInt(patientID);
         var med_code = parseInt(medicine);
         var exam_code = parseInt(exam);
-        if( isNaN(d_id) || isNaN(p_id) )
+        if( isNaN(d_id) || isNaN(p_id) || isNaN(med_code) || isNaN(exam_code) )
         {
             console.log("Entrada inválida");
         }

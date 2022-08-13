@@ -77,12 +77,13 @@
   text-align: left;
   max-height: 80px;
   overflow-y: auto;
+  white-space: pre-wrap;
   scrollbar-gutter: stable;
 }
 
-#relation-select-password, #relation-select-ocuppation, #relation-select-id, #relation-select-address{
+#relation-select-password, #relation-select-id, #relation-select-address{
   color:rgb(99, 35, 90);
 }
-#relation-select-label{
-  color: rgb(99, 35, 90);
+#relation-select-label,#relation-select-ocuppation{
+  color: black;
 }

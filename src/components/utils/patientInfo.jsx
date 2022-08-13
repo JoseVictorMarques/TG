@@ -69,7 +69,7 @@ export default function PatientInfo(props) {
             </Button>
             <div className="textdiv" style={{marginTop:"60px"}}>{patientName ? "Patient Name: "+patientName : null }</div>
             <div className="textdiv">{totalAppoint? "Total appointments: "+totalAppoint: null}</div>
-            <div className="textdivdetails">{diagnosis.length>0? diagnosis.map((elem)=>JSON.stringify(elem)): null}</div>
+            <div className="textdivdetails">{diagnosis.length>0? diagnosis.map((elem)=>(JSON.stringify(elem))).join('\n'): null}</div>
         </div>
     )
 }

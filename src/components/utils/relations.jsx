@@ -1,6 +1,5 @@
 import { Button } from '@material-ui/core';
 import { useState } from 'react';
-import Box from '@material-ui/core/Box';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,9 +12,9 @@ export default function Relations(props) {
         setActor(event.target.value);
       };
 
-    function relations(doctorID,authorization){
+    function relations(actorID,authorization){
 
-        var a_id = parseInt(doctorID);
+        var a_id = parseInt(actorID);
         var p_id = parseInt(props.id);
         var lc_autho = (authorization.toLowerCase() === 'true');
         console.log(props)
@@ -26,7 +25,7 @@ export default function Relations(props) {
 
         else{
             try{
-                props.contract.methods.relations(p_id,a_id,lc_autho,actor).send( {from: props.accounts[0]} )
+                props.contract.methods.relations(p_id,a_id,lc_autho,parseInt(actor)).send( {from: props.accounts[0]} )
             }catch(error){
                 console.log(error);
             }
