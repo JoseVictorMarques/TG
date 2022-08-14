@@ -8,7 +8,6 @@ import AddDCenter from '../../utils/addDCenter';
 import DoctorInfo from '../../utils/doctorInfo';
 import PatientInfo from '../../utils/patientInfo';
 import { Link} from "react-router-dom";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Button } from '@material-ui/core';
 
 function TabPanel({ children, value, index }) {
@@ -17,7 +16,6 @@ function TabPanel({ children, value, index }) {
 
 function Regulator({contract, accounts}) {
 
-    const {rid} = useParams();
     const [value, setValue] = useState(0);
     const handleChange = useCallback((event, newValue) => {
       setValue(newValue);
