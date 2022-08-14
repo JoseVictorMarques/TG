@@ -11,7 +11,7 @@ export default function Appointment(props) {
         var exam_code = parseInt(exam);
         if( isNaN(d_id) || isNaN(p_id) || isNaN(med_code) || isNaN(exam_code) )
         {
-            console.log("Entrada inválida");
+            window.alert("Some fields are missing");
         }
 
         else{
