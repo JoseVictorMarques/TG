@@ -44,7 +44,7 @@ function DCenter({contract, accounts}) {
                 <DoctorInfo contract={contract}/>
               </TabPanel>
               <TabPanel value={value} index={1} >
-                <PatientInfo contract={contract}/>
+                <PatientInfo contract={contract} request_user={dcid} request_type ={5}/>
               </TabPanel>
             
             </SwipeableViews>

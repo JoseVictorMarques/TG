@@ -51,7 +51,7 @@ function Doctor({contract, accounts}) {
                 <DoctorInfo contract={contract}/>
               </TabPanel>
               <TabPanel value={value} index={2} >
-                <PatientInfo contract={contract}/>
+                <PatientInfo contract={contract} request_user={did} request_type ={1}/>
               </TabPanel>
             
             </SwipeableViews>

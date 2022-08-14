@@ -6,6 +6,7 @@ export default function PatientInfo(props) {
     const [totalAppoint,settotalAppoint] = useState(null);
     const [patientName,setPatientName] = useState('');
     const [diagnosis, setDiagnosis] = useState([]);
+    const [autho, setAutho] = useState(null)
 
     function conversionDate(timestamp){
       timestamp = parseInt(timestamp)
@@ -18,13 +19,41 @@ export default function PatientInfo(props) {
       return converted
     }
 
-    function PatientInfo(patientID){
+    function authorizationAnalisis(request_user, request_type,patientID){
+      if (request_type === 1 ){
+        props.contract.methods.authorizationsDoctor(patientID, request_user).call().then(function(result){
+          setAutho(result);})
+      }
+      else if(request_type === 2)
+      {
+        setAutho(request_user === patientID)
+      }
+      else if(request_type === 3)
+      {
+        setAutho(true)
+      }
+      else if(request_type ===4){
+        props.contract.methods.authorizationsPharmacy(patientID, request_user).call().then(function(result){
+          setAutho(result);})
+      }
+      else if(request_type ===5){
+        props.contract.methods.authorizationsDCenter(patientID, request_user).call().then(function(result){
+          setAutho(result);})
+      }
+      else{
+        setAutho(false)
+      }
+    }
 
+    function PatientInfo(patientID){
+        authorizationAnalisis(props.request_user, props.request_type, patientID)
         var p_id = parseInt(patientID,10);
+        console.log(autho)
         if( isNaN(p_id) )
         { 
-          console.log("Entrada inválida");
-        }else{
+          window.alert("Invalid input : type needs to be int");
+        }
+        else{
           try{
             props.contract.methods.patients(p_id).call().then(function(result){
               console.log(props)
@@ -67,9 +96,9 @@ export default function PatientInfo(props) {
             >
                 GET DATA
             </Button>
-            <div className="textdiv" style={{marginTop:"60px"}}>{patientName ? "Patient Name: "+patientName : null }</div>
-            <div className="textdiv">{totalAppoint? "Total appointments: "+totalAppoint: null}</div>
-            <div className="textdivdetails">{diagnosis.length>0? diagnosis.map((elem)=>(JSON.stringify(elem))).join('\n'): null}</div>
+            <div className="textdiv" style={{marginTop:"60px"}}>{autho === false? "Not authorized": patientName? "Patient Name: "+patientName : null }</div>
+            <div className="textdiv">{totalAppoint && autho ? "Total appointments: "+totalAppoint: null}</div>
+            <div className="textdivdetails">{diagnosis.length>0 && autho? diagnosis.map((elem)=>(JSON.stringify(elem))).join('\n'): null}</div>
         </div>
     )
 }

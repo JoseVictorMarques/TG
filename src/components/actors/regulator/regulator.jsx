@@ -7,6 +7,7 @@ import AddPharmacy from '../../utils/addPharmacy';
 import AddDCenter from '../../utils/addDCenter';
 import DoctorInfo from '../../utils/doctorInfo';
 import PatientInfo from '../../utils/patientInfo';
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Link} from "react-router-dom";
 import { Button } from '@material-ui/core';
 
@@ -15,7 +16,7 @@ function TabPanel({ children, value, index }) {
 }
 
 function Regulator({contract, accounts}) {
-
+    const {rid} = useParams();
     const [value, setValue] = useState(0);
     const handleChange = useCallback((event, newValue) => {
       setValue(newValue);
@@ -67,7 +68,7 @@ function Regulator({contract, accounts}) {
                 <DoctorInfo contract={contract}/>
               </TabPanel>
               <TabPanel value={value} index={5} >
-                <PatientInfo contract={contract}/>
+                <PatientInfo contract={contract} request_user={rid} request_type ={3}/>
               </TabPanel>
             
             </SwipeableViews>

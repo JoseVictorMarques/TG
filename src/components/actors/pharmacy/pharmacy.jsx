@@ -44,7 +44,7 @@ function Pharmacy({contract, accounts}) {
                 <DoctorInfo contract={contract}/>
               </TabPanel>
               <TabPanel value={value} index={1} >
-                <PatientInfo contract={contract}/>
+                <PatientInfo contract={contract} request_user={phid} request_type ={4}/>
               </TabPanel>
             
             </SwipeableViews>
