@@ -96,7 +96,7 @@ export default function PatientInfo(props) {
             >
                 GET DATA
             </Button>
-            <div className="textdiv" style={{marginTop:"60px"}}>{autho === false? "Not authorized": patientName? "Patient Name: "+patientName : null }</div>
+            <div className="textdiv" style={{marginTop:"60px"}}>{autho === false? "You are not authorized": patientName? "Patient Name: "+patientName : null }</div>
             <div className="textdiv">{totalAppoint && autho ? "Total appointments: "+totalAppoint: null}</div>
             <div className="textdivdetails">{diagnosis.length>0 && autho? diagnosis.map((elem)=>(JSON.stringify(elem))).join('\n'): null}</div>
         </div>
