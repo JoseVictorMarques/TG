@@ -2,6 +2,20 @@
 	{
 		"constant": true,
 		"inputs": [],
+		"name": "medicinesCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
 		"name": "doctorsCount",
 		"outputs": [
 			{
@@ -137,6 +151,59 @@
 				"type": "uint256"
 			}
 		],
+		"name": "exams",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "code",
+				"type": "uint256"
+			},
+			{
+				"name": "patient_id",
+				"type": "uint256"
+			},
+			{
+				"name": "was_concluded",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_medicine",
+				"type": "uint256"
+			},
+			{
+				"name": "_patientID",
+				"type": "uint256"
+			},
+			{
+				"name": "_pharmacyID",
+				"type": "uint256"
+			}
+		],
+		"name": "sell_medicine",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"name": "regulators",
 		"outputs": [
 			{
@@ -181,6 +248,28 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_exam",
+				"type": "uint256"
+			},
+			{
+				"name": "_patientID",
+				"type": "uint256"
+			},
+			{
+				"name": "_dcenterID",
+				"type": "uint256"
+			}
+		],
+		"name": "take_exam",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -283,6 +372,24 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_code",
+				"type": "uint256"
+			},
+			{
+				"name": "_patientID",
+				"type": "uint256"
+			}
+		],
+		"name": "addExam",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -483,6 +590,37 @@
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "medicines",
+		"outputs": [
+			{
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"name": "code",
+				"type": "uint256"
+			},
+			{
+				"name": "patient_id",
+				"type": "uint256"
+			},
+			{
+				"name": "was_bought",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -505,6 +643,38 @@
 				"type": "bool"
 			}
 		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "examsCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_code",
+				"type": "uint256"
+			},
+			{
+				"name": "_patientID",
+				"type": "uint256"
+			}
+		],
+		"name": "addMedicine",
+		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"

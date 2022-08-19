@@ -6,6 +6,7 @@ import PatientInfo from '../../utils/patientInfo';
 import { Link} from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Button } from '@material-ui/core';
+import SalesMedicine from '../../utils/salesMedicine';
 
 function TabPanel({ children, value, index }) {
   return <div>{value === index && <Box p={1}>{children}</Box>}</div>;
@@ -33,6 +34,7 @@ function Pharmacy({contract, accounts}) {
             >
               <Tab label={"Doctor info"} style={{color:"#63235A"}}/>
               <Tab label={"Pacient info"} style={{color:"#63235A"}}/>
+              <Tab label={"Sales Medicine"} style={{color:"#63235A"}}/>
             </Tabs>
 
             <div className="logo_text">MedRecords</div>
@@ -45,6 +47,9 @@ function Pharmacy({contract, accounts}) {
               </TabPanel>
               <TabPanel value={value} index={1} >
                 <PatientInfo contract={contract} request_user={phid} request_type ={4}/>
+              </TabPanel>
+              <TabPanel value={value} index={2} >
+                <SalesMedicine contract={contract} accounts={accounts} id={phid} />
               </TabPanel>
             
             </SwipeableViews>

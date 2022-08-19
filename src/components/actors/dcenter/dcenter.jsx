@@ -3,6 +3,7 @@ import { Tabs,Tab,Box } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import DoctorInfo from '../../utils/doctorInfo';
 import PatientInfo from '../../utils/patientInfo';
+import TakeExam from '../../utils/takeExam';
 import { Link} from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Button } from '@material-ui/core';
@@ -33,6 +34,7 @@ function DCenter({contract, accounts}) {
             >
               <Tab label={"Doctor info"} style={{color:"#63235A"}}/>
               <Tab label={"Pacient info"} style={{color:"#63235A"}}/>
+              <Tab label={"Take exam"} style={{color:"#63235A"}}/>
             </Tabs>
 
             <div className="logo_text">MedRecords</div>
@@ -45,6 +47,9 @@ function DCenter({contract, accounts}) {
               </TabPanel>
               <TabPanel value={value} index={1} >
                 <PatientInfo contract={contract} request_user={dcid} request_type ={5}/>
+              </TabPanel>
+              <TabPanel value={value} index={2} >
+                <TakeExam contract={contract} id={dcid} accounts={accounts}/>
               </TabPanel>
             
             </SwipeableViews>
