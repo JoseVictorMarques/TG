@@ -53,7 +53,7 @@ export default function TakeExam(props) {
             >
                 SUBMIT
             </Button>
-            <div className="textdiv" style={{marginTop:"60px"}}>{auth ===false? "You are not authorized":   null }</div>
+            <div className="textdiv" style={{marginTop:"60px"}}>{auth ===false? "You are not authorized":   auth === true? "Exam concluded":null }</div>
         </div>
     )
 }

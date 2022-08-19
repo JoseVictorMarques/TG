@@ -53,7 +53,7 @@ export default function SalesMedicine(props) {
             >
                 SUBMIT
             </Button>
-            <div className="textdiv" style={{marginTop:"60px"}}>{auth === false? "You are not authorized":   null }</div>
+            <div className="textdiv" style={{marginTop:"60px"}}>{auth === false? "You are not authorized":   auth === true? "Medicine purchased":null }</div>
         </div>
     )
 }
