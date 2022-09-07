@@ -4,14 +4,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useState } from 'react';
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './signIn.css'
 import { Button, Input } from '@material-ui/core';
 
-function SignIn(props) {
+function ChangePass(props) {
   const [actor, setActor] = useState('');
-  const [id, setID] = useState(0);
-  const [respOK, setRespOk] = useState(undefined);
   const [contr,setContr] = useState('');
 
   const handleChange = (event) => {
@@ -25,30 +23,22 @@ function SignIn(props) {
      }
   };
 
-  function handleSubmit (ident, pwrd ){
+  function handleSubmit (ident, old_pwrd,new_pwrd ){
     var uid = parseInt(ident,10);
     if (props.contract.options.address !== contr){
       props.contract.options.address = contr;
 
     }
     try{
-      props.contract.methods.verifyUser(actor, uid, pwrd).send( {from: props.accounts[0], gas:3000000} ).then(out=>{setRespOk(out)})
+      props.contract.methods.change_password(actor, uid, old_pwrd, new_pwrd).send( {from: props.accounts[0], gas:3000000})
     }catch(error)
     {
       console.log(error);
     }
 
-    setID(uid);
   }
 
-  function handleChangePass(){
-    if (props.contract.options.address !== contr){
-      props.contract.options.address = contr;
-    }
-    setRespOk(true);
-    setActor(6);
 
-  }
 
   return (
       <div className='SignIn-All'>
@@ -80,10 +70,18 @@ function SignIn(props) {
           </div>
           <div className='password-div'>
               <FormControl>
-                <InputLabel  id="demo-simple-select-password">Password</InputLabel>
-                <Input id="signin_password"
+                <InputLabel  id="demo-simple-select-password">Old Password</InputLabel>
+                <Input id="signin_oldpassword"
                 type= "password"
-                placeholder="type your password here"/>
+                placeholder="type your old password here"/>
+              </FormControl>
+          </div>
+          <div className='password-div'>
+              <FormControl>
+                <InputLabel  id="demo-simple-select-password">New Password</InputLabel>
+                <Input id="signin_newpassword"
+                type= "password"
+                placeholder="type your new password here"/>
               </FormControl>
           </div>
           <div className='address-div'>
@@ -96,27 +94,17 @@ function SignIn(props) {
           </div>
           <Button 
               style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'10vw', marginTop:'10px'}}
-              onClick={()=>handleSubmit( document.getElementById('signin_id').value, document.getElementById('signin_password').value)}
+              onClick={()=>handleSubmit( document.getElementById('signin_id').value, document.getElementById('signin_oldpassword').value,document.getElementById('signin_newpassword').value)}
           >
-            Enter
+            CHANGE
           </Button>
-          <Button 
-              style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'10vw', marginTop:'10px'}}
-              onClick={()=>handleChangePass()}
-          >
-            Change Password
-          </Button>
-          {  
-             ( respOK !==undefined && actor === 1)? <Redirect to= {`/doctor/${id}`} />:
-             (respOK !==undefined  && actor === 2)? <Redirect to={`/patient/${id}`}  />:
-             ( respOK !==undefined && actor === 3)? <Redirect to={`/regulator/${id}`}  />:
-             ( respOK !==undefined && actor === 4)? <Redirect to={`/pharmacy/${id}`}  />:
-             ( respOK !==undefined && actor === 5)? <Redirect to={`/dcenter/${id}`}  />:
-             ( respOK !==undefined && actor === 6)? <Redirect to={`/changepassword`} />:
-              <Redirect to="/" /> 
-          }
+          <Link to="/">
+              <Button
+              variant="contained"
+              style={{backgroundColor: '#63235A', color: '#FFFFFF', float: 'right', marginRight:'10vw',marginTop:'10px'}}>Back</Button>
+          </Link>
       </div>
   );
 }
 
-export default SignIn
+export default ChangePass;

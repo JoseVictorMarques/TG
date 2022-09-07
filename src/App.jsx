@@ -9,6 +9,7 @@ import Regulator from './components/actors/regulator/regulator';
 import Pharmacy from './components/actors/pharmacy/pharmacy';
 import DCenter from './components/actors/dcenter/dcenter';
 import SignIn from './components/login/signIn';
+import ChangePass from './components/login/changePassword';
 import { useEffect, useState } from 'react';
 
   // endereço onde a blockchain está rodando
@@ -47,6 +48,9 @@ function App() {
       </Route>
       <Route path="/dcenter/:dcid">
         <DCenter contract ={contract} accounts ={accounts}/>
+      </Route>
+      <Route path="/changepassword">
+        <ChangePass contract ={contract} accounts ={accounts}/>
       </Route>
       <Route path="/">
         <SignIn contract ={contract} accounts ={accounts}/>
