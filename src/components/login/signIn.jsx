@@ -11,7 +11,6 @@ import { Button, Input } from '@material-ui/core';
 function SignIn(props) {
   const [actor, setActor] = useState('');
   const [id, setID] = useState(0);
-  const [password, setPassword]= useState('');
   const [respOK, setRespOk] = useState(undefined);
   const [contr,setContr] = useState('');
 
@@ -40,7 +39,6 @@ function SignIn(props) {
     }
 
     setID(uid);
-    setPassword(pwrd);
   }
 
 
